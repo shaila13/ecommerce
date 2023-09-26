@@ -1,7 +1,7 @@
 
 # crud-superheroes Project
 
-    Este es un proyecto inicial para Java 11 con Gradle.
+    Este es un proyecto inicial para Java 17 con Gradle.
     El proyecto incluye Gradle wrapper, por lo que no es necesario instalar Gradle para ejecutar la aplicación.
 ## Installation
 Eclipse
@@ -12,9 +12,9 @@ Eclipse
     3. Seleccionar el directorio java-gradle-starter-project como directorio raíz del proyecto.
     4. Finalizar para completar la importación.
     5. Seleccionar Proyecto > Propiedades. En Java Build Path, en la pestaña Bibliotecas, Modulepath esté 
-        configurado en JRE System Library (JavaSE-11). 
+        configurado en JRE System Library (JavaSE-17). 
         En Java Compiler, asegúrarse de que esté seleccionada la casilla de verificación Usar conformidad del 
-        entorno de ejecución 'JavaSE-11' en la 'Ruta de compilación de Java'.
+        entorno de ejecución 'JavaSE-17' en la 'Ruta de compilación de Java'.
     6. Clic con el botón derecho en el proyecto en el Explorador de proyectos o el Explorador de paquetes y 
         elegir Gradle > Refresh Gradle project.
     7. Abrir Gradle Tasks con Window > Show View > Other... > Gradle > Gradle Tasks.
