@@ -41,8 +41,8 @@ Eclipse
         En application.properties
         server.port: 8090
 
-        spring.application.name: jpastreamer-example
-        spring.datasource.url=jdbc:h2:file:/data/refactorizando/h2
+        spring.application.name: ecommerce
+        #spring.datasource.url=jdbc:h2:file:/data/ecommerce/h2
         #spring.datasource.url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
         spring.datasource.url: jdbc:h2:mem:testdb
         spring.jpa.defer-datasource-initialization=true
