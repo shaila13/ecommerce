@@ -1,9 +1,10 @@
 package com.icodeap.ecommerce.infrastructure.entity;
 
-import com.icodeap.ecommerce.domain.User;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -12,20 +13,19 @@ import java.time.LocalDateTime;
 @Table(name = "products")
 @Data
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private  String code;
-    private String name;
-    private String description;
-    private String image;
-    private BigDecimal price;
-
-    private LocalDateTime dateCreated;
-    private LocalDateTime dateUpdated;
-
+     Integer id;
+      String code;
+     String name;
+     String description;
+     String image;
+     BigDecimal price;
+     LocalDateTime dateCreated;
+     LocalDateTime dateUpdated;
     @ManyToOne
-    private UserEntity userEntity;
+     UserEntity userEntity;
 }

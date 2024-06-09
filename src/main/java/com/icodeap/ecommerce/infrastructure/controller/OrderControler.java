@@ -1,7 +1,8 @@
 package com.icodeap.ecommerce.infrastructure.controller;
 
-import com.icodeap.ecommerce.application.service.*;
-import com.icodeap.ecommerce.domain.*;
+import com.icodeap.ecommerce.domain.models.*;
+import com.icodeap.ecommerce.domain.ports.in.*;
+import com.icodeap.ecommerce.infrastructure.Utils.ValidateStock;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/user/order")
@@ -40,25 +42,24 @@ public class OrderControler {
     @GetMapping("/sumary-order")
     public String showSumaryOrder(Model model, HttpSession httpSession ){
         log.info("id user desde la variable de session: {}",httpSession.getAttribute("iduser").toString());
-        User user = userService.findById(Integer.parseInt(httpSession.getAttribute("iduser").toString()));
+        Optional<User> user = userService.findById(Integer.parseInt(httpSession.getAttribute("iduser").toString()));
         model.addAttribute("cart", cartService.getItemCarts());
         model.addAttribute("total", cartService.getTotalCart());
-        model.addAttribute("user", user);
+        model.addAttribute("user", user.get());
         model.addAttribute("id", httpSession.getAttribute("iduser").toString());
         return "user/sumaryorder";
     }
 
     @GetMapping("/create-order")
     public String createOrder(RedirectAttributes attributes, HttpSession httpSession){
-        log.info("create order..");
-        log.info("id user desde la variable de session: {}",httpSession.getAttribute("iduser").toString());
+        log.info("create order -> id user desde la variable de session: {}",httpSession.getAttribute("iduser").toString());
         //obtener user temporal
-        User user = userService.findById( Integer.parseInt(httpSession.getAttribute("iduser").toString()));
+        Optional<User> user = userService.findById( Integer.parseInt(httpSession.getAttribute("iduser").toString()));
 
         //order
         Order order = new Order();
         order.setDateCreated(LocalDateTime.now());
-        order.setUser(user);
+        order.setUser(user.get());
 
         order = orderService.createOrder(order);
 

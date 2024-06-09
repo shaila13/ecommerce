@@ -1,6 +1,6 @@
 package com.icodeap.ecommerce.infrastructure.controller;
 
-import com.icodeap.ecommerce.application.service.LogoutService;
+import com.icodeap.ecommerce.domain.ports.in.LogoutService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

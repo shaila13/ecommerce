@@ -1,8 +1,6 @@
 package com.icodeap.ecommerce.infrastructure.controller;
 
-import com.icodeap.ecommerce.application.service.RegistrationService;
-import com.icodeap.ecommerce.domain.User;
-import com.icodeap.ecommerce.domain.UserType;
+import com.icodeap.ecommerce.domain.ports.in.RegistrationService;
 import com.icodeap.ecommerce.infrastructure.dto.UserDto;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -12,8 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.time.LocalDateTime;
 
 @Controller
 @RequestMapping("/register")

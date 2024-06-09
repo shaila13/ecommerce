@@ -3,13 +3,16 @@ package com.icodeap.ecommerce.infrastructure.entity;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.experimental.FieldDefaults;
 
 @Data
 @Embeddable
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class OrderProductPK {
     @ManyToOne (fetch = FetchType.LAZY)
-    private OrderEntity orderEntity;
+     OrderEntity orderEntity;
     @ManyToOne (fetch = FetchType.LAZY)
-    private  ProductEntity productEntity;
+      ProductEntity productEntity;
 }

@@ -1,8 +1,8 @@
 package com.icodeap.ecommerce.infrastructure.controller;
 
-import com.icodeap.ecommerce.application.service.ProductService;
-import com.icodeap.ecommerce.domain.Product;
-import com.icodeap.ecommerce.domain.User;
+import com.icodeap.ecommerce.domain.ports.in.ProductService;
+import com.icodeap.ecommerce.domain.models.Product;
+import com.icodeap.ecommerce.domain.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

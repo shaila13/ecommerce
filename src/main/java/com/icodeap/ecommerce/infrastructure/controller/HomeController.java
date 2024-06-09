@@ -1,8 +1,8 @@
 package com.icodeap.ecommerce.infrastructure.controller;
 
-import com.icodeap.ecommerce.application.service.ProductService;
-import com.icodeap.ecommerce.application.service.StockService;
-import com.icodeap.ecommerce.domain.Stock;
+import com.icodeap.ecommerce.domain.ports.in.ProductService;
+import com.icodeap.ecommerce.domain.ports.in.StockService;
+import com.icodeap.ecommerce.domain.models.Stock;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

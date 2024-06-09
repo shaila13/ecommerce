@@ -1,8 +1,7 @@
 package com.icodeap.ecommerce.infrastructure.configuration;
 
-import com.icodeap.ecommerce.infrastructure.service.LoginHandler;
-import com.icodeap.ecommerce.infrastructure.service.UserDetailServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.icodeap.ecommerce.application.usescases.LoginHandler;
+import com.icodeap.ecommerce.application.usescases.UserDetailServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -17,11 +16,11 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     private final UserDetailServiceImpl userDetailService;
 
-    @Autowired
-    private LoginHandler loginHandler;
+    private final LoginHandler loginHandler;
 
-    public SecurityConfig(UserDetailServiceImpl userDetailService) {
+    public SecurityConfig(UserDetailServiceImpl userDetailService, LoginHandler loginHandler) {
         this.userDetailService = userDetailService;
+        this.loginHandler = loginHandler;
     }
     @Bean
     public DaoAuthenticationProvider authenticationProvider(){

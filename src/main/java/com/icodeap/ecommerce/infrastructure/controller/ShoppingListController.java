@@ -1,11 +1,11 @@
 package com.icodeap.ecommerce.infrastructure.controller;
 
-import com.icodeap.ecommerce.application.service.OrderProductService;
-import com.icodeap.ecommerce.application.service.OrderService;
-import com.icodeap.ecommerce.application.service.UserService;
-import com.icodeap.ecommerce.domain.Order;
-import com.icodeap.ecommerce.domain.OrderProduct;
-import com.icodeap.ecommerce.domain.User;
+import com.icodeap.ecommerce.domain.ports.in.OrderProductService;
+import com.icodeap.ecommerce.domain.ports.in.OrderService;
+import com.icodeap.ecommerce.domain.ports.in.UserService;
+import com.icodeap.ecommerce.domain.models.Order;
+import com.icodeap.ecommerce.domain.models.OrderProduct;
+import com.icodeap.ecommerce.domain.models.User;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/user/cart/shopping")
@@ -33,9 +34,9 @@ public class ShoppingListController {
     @GetMapping
     public String showShoppingList(Model model, HttpSession httpSession){
         List<Order> newListOrder = new ArrayList<>();
-        User user = userService.findById(Integer.parseInt(httpSession.getAttribute("iduser").toString()));
+        Optional<User> user = userService.findById(Integer.parseInt(httpSession.getAttribute("iduser").toString()));
 
-        Iterable<Order> orders = orderService.getOrdersByuser(user);
+        Iterable<Order> orders = orderService.getOrdersByuser(user.get());
         for (Order order: orders ) {
             newListOrder.add(getOrdersProducts(order));
         }

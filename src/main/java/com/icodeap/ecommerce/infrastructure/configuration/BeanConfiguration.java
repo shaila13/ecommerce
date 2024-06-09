@@ -1,8 +1,8 @@
 package com.icodeap.ecommerce.infrastructure.configuration;
 
-import com.icodeap.ecommerce.application.repository.*;
-import com.icodeap.ecommerce.application.service.*;
-import com.icodeap.ecommerce.domain.User;
+import com.icodeap.ecommerce.domain.ports.in.*;
+import com.icodeap.ecommerce.domain.ports.out.*;
+import com.icodeap.ecommerce.infrastructure.Utils.ValidateStock;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -41,7 +41,7 @@ public class BeanConfiguration {
     }
     @Bean
     @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
-    public  CartService cartService(){
+    public CartService cartService(){
         return  new CartService();
     }
 

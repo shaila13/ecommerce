@@ -1,6 +1,6 @@
 package com.icodeap.ecommerce.infrastructure.mapper;
 
-import com.icodeap.ecommerce.domain.Order;
+import com.icodeap.ecommerce.domain.models.Order;
 import com.icodeap.ecommerce.infrastructure.entity.OrderEntity;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;

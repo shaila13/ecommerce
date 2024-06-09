@@ -1,13 +1,12 @@
 package com.icodeap.ecommerce.infrastructure.controller;
 
-import com.icodeap.ecommerce.application.service.LoginService;
-import com.icodeap.ecommerce.domain.User;
-import com.icodeap.ecommerce.infrastructure.dto.UserDto;
+import com.icodeap.ecommerce.domain.models.UserType;
+import com.icodeap.ecommerce.domain.ports.in.LoginService;
+import com.icodeap.ecommerce.domain.models.User;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -28,16 +27,11 @@ public class LoginController {
 
     @GetMapping("/access")
     public String access(RedirectAttributes attributes, HttpSession httpSession){
-        User user = loginService.getUser( Integer.parseInt( httpSession.getAttribute("iduser").toString() ) ) ;
-        attributes.addFlashAttribute("id", httpSession.getAttribute("iduser").toString() );
-        if(loginService.existUser(user.getEmail())){
-           if (loginService.getUserType(user.getEmail()).name().equals("ADMIN")){
-               return "redirect:/admin";
-           }else{
-               return "redirect:/home";
-           }
-        }
-        return "redirect:/home";
-    }
+        String userIdStr = httpSession.getAttribute("iduser").toString();
+        User user = loginService.getUserById(Integer.parseInt(userIdStr));
+        attributes.addFlashAttribute("id", userIdStr);
+        return (loginService.existUser(user.getEmail()) &&
+                loginService.getUserType(user.getEmail()) == UserType.ADMIN) ? "redirect:/admin" : "redirect:/home";
 
+    }
 }

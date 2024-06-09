@@ -1,9 +1,9 @@
 package com.icodeap.ecommerce.infrastructure.controller;
 
-import com.icodeap.ecommerce.application.service.StockService;
-import com.icodeap.ecommerce.application.service.ValidateStock;
-import com.icodeap.ecommerce.domain.Product;
-import com.icodeap.ecommerce.domain.Stock;
+import com.icodeap.ecommerce.domain.ports.in.StockService;
+import com.icodeap.ecommerce.infrastructure.Utils.ValidateStock;
+import com.icodeap.ecommerce.domain.models.Product;
+import com.icodeap.ecommerce.domain.models.Stock;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
